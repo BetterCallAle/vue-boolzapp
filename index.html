@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
+    <!-- FONTS -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Main Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
     <!-- VueJS -->
@@ -12,7 +19,40 @@
 </head>
 <body>
     
-    <div id="app"></div>
+    <div id="app">
+        <!-- conversation space -->
+        <div class="conversation">
+            <!-- Header -->
+            <header class="conversation-header">
+                <div class="header-container flex-container jc-between align-center">
+                    <div class="main-user">
+                        <div class="avatar">
+                            <img src="img/avatar_io.jpg" alt="Il tuo avatar">
+                        </div>
+                        <h3 class="user-name">Sofia</h3>
+                    </div>
+    
+                    <div class="tools">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+            </header>
+            <!-- /Header -->
+
+            <!-- Main -->
+            <main>
+                <section id="alert"></section>
+            </main>
+            <!-- /Main -->
+        </div>
+        <!-- /conversation space -->
+
+        <!-- chat space -->
+        <div class="chat"></div>
+        <!-- /chat space -->
+    </div>
 
     <!-- Link JS -->
     <script src="js/script.js"></script>
