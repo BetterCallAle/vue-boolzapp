@@ -232,7 +232,7 @@ header .avatar{
     background-color: var(--primary-bg);
 }
 
-.contact-info{
+#contacts .contact-info{
     width: 50%;
 }
 
