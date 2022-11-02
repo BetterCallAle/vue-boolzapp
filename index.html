@@ -162,7 +162,8 @@
                 >
                 <!-- /Chat input -->
 
-                <button class="vocal-btn"><i class="fa-solid fa-microphone"></i></button>
+                <button class="vocal-btn" v-if="myMessage.message.length === 0"><i class="fa-solid fa-microphone"></i></button>
+                <button class="send-btn" v-else @click="sendMessage"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
         <!-- /chat space -->

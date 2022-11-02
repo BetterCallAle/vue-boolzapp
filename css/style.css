@@ -272,7 +272,7 @@ header .avatar{
     width: 100%;
     overflow-y: scroll;
     background-image: url(../img/mine.jpg);
-    padding-top: 2rem
+    padding: 2rem 0;
 }
 
 .message-row{
@@ -310,7 +310,9 @@ header .avatar{
     background-color: var(--primary-bg);
 }
 
-.emoji-btn, .vocal-btn{
+.emoji-btn, 
+.vocal-btn, 
+.send-btn{
     width: 10%;
     height: 100%;
     text-align: center;
