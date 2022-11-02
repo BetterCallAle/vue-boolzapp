@@ -11,6 +11,7 @@
     --recieved-bg: #FFFFFF;
 
     --font-gray: #B1B1B1;
+    --font-dark-gray: #5D7494;
     /* sizes */
     --header-size: 70px;
 }
@@ -70,6 +71,12 @@ a{
     height: 100%;
 }
 
+.container{
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+}
+
 .user-name{
     display: inline-block;
     font-weight: 500;
@@ -121,6 +128,42 @@ a{
     background-color: var(--primary-bg);
 }
 /* /Header */
+
+/* Main */
+/* Section: alert */
+#alert{
+    height: 80px;
+    width: 100%;
+    background-color: var(--secondary-bg);
+}
+
+#alert .icon{
+    width: 3em;
+    height: 3em;
+    text-align: center;
+    line-height: 3em;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+#alert .icon i{
+    font-size: 1.5rem;
+    color: var(--secondary-bg);
+}
+
+#alert .text h2{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+#alert .text a{
+    color: var(--font-dark-gray);
+    text-decoration: underline;
+    font-size: .8rem;
+}
+/* /Section: alert */
+/* /Main */
 /* /Conversation space */
 
 /* Chat space */
@@ -128,7 +171,7 @@ a{
     width: 65%;
     height: 100%;
     /* debug */
-    background-color: lightgoldenrodyellow;
+    background-color: lightgoldenrodyellow; 
 }
 /* /Chat space */
 /* /APP */
