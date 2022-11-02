@@ -61,8 +61,6 @@ a{
 
 .avatar{
     display: inline-block;
-    width: 3em;
-    height: 3em;
     border-radius: 50%;
     overflow: hidden;
     vertical-align: middle;
@@ -136,6 +134,11 @@ input[type="text"]{
     height: var(--header-size);
     background-color: var(--primary-bg);
 }
+
+.conversation-header .avatar{
+    width: 3em;
+    height: 3em;
+}
 /* /Header */
 
 /* Main */
@@ -204,6 +207,31 @@ input[type="text"]{
     outline: none;
 }
 /* /Section: search */
+
+/* Section: contacts */
+#contacts{
+    height: calc( 90vh - var(--header-size) - var(--alert-height) - var(--search-height));
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.contact{
+    padding: 1rem 0;
+}
+
+.contact .avatar{
+    width: 4em;
+    height: 4em;
+}
+
+.last-message{
+    display: block;
+    color: var(--font-gray);
+    font-size: .8rem;
+    margin-top: .2rem;
+    overflow: hidden;
+}
+/* /Section: contacts */
 /* /Main */
 /* /Conversation space */
 

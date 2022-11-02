@@ -32,11 +32,11 @@
                         <h3 class="user-name">Sofia</h3>
                     </div>
     
-                    <div class="tools">
+                    <nav class="tools">
                         <i class="fa-solid fa-circle-notch"></i>
                         <i class="fa-solid fa-message"></i>
                         <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
+                    </nav>
                 </div>
             </header>
             <!-- /Header -->
@@ -65,6 +65,29 @@
                     </div>
                 </section>
                 <!-- /Section: search -->
+
+                <!-- Section: contacts -->
+                <section id="contacts">
+                    <div class="container">
+                        <!-- Contact wrapper -->
+                        <div v-for="thisContact in contacts" class="contact flex-container">
+                            <!-- Contact image -->
+                            <div class="avatar">
+                                <img :src="`img/avatar${thisContact.avatar}.jpg`" :alt="`Foto profilo di ${thisContact.name}`">
+                            </div>
+                            <!-- /Contact image -->
+
+                            <!-- Contact info -->
+                            <div class="contact-info">
+                                <h3 class="user-name">{{ thisContact.name }}</h3>
+                                <span class="last-message">{{ thisContact.messages[thisContact.messages.length - 1].message }}</span>
+                            </div>
+                            <!-- /Contact info -->
+                        </div>
+                        <!-- /Contact wrapper -->
+                    </div>
+                </section>
+                <!-- /Section: contacts -->
             </main>
             <!-- /Main -->
         </div>
