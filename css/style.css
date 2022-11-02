@@ -1,4 +1,40 @@
+/* VAR */
+:root{
+    /* colors */
+    --body-bg-primary: #009688;
+    --body-bg-secondary: #D9DBD4;
+
+    --primary-bg: #EAEAEA;
+    --secondary-bg: #8EDAFC;
+
+    --sent-bg: #D5F9BA;
+    --recieved-bg: #FFFFFF;
+
+    /* sizes */
+    --header-size: 100px;
+}
+
 /* RESET */
+html{
+    font-family: sans-serif;
+}
+
+body{
+    background-color: var(--body-bg-secondary);
+    position: relative;
+}
+
+body::after{
+    content: "";
+    background-color: var(--body-bg-primary);
+    display: block;
+    width: 100%;
+    height: 30vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 *{
     margin: 0;
     padding: 0;
