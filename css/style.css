@@ -91,7 +91,6 @@ a{
 }
 
 input[type="text"]{
-    color: var(--font-gray);
     padding-left: .8rem;
     padding-right: .8rem;
 }
@@ -253,8 +252,6 @@ header .avatar{
 .chat{
     width: 65%;
     height: 100%;
-    /* debug */
-    background-color: lightgoldenrodyellow; 
 }
 
 .last-seen{

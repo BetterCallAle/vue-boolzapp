@@ -166,12 +166,42 @@ createApp({
                     ],
                 }
             ],
-            indexActive: 0
+
+            indexActive: 0,
+
+            myMessage: {
+                date: this.getDate(),
+                message: '',
+                status: 'sent'
+            },
+
+            botMessage:{
+                date: this.getDate(),
+                message: 'ok',
+                status: 'received'
+            },
         }
     },
     methods:{
         activateThisContact(index){
-            this.indexActive = index
+            this.indexActive = index;
+        },
+
+        sendMessage(){
+            if(this.myMessage.message.length > 0){
+                this.contacts[this.indexActive].messages.push({...this.myMessage});
+
+                setTimeout(()=>{
+                    this.contacts[this.indexActive].messages.push(this.botMessage)
+                }, 1000)
+
+                this.myMessage.message = '';
+            }
+        },
+
+        getDate(){
+            const date = new Date;
+            return date.getHours() + ':' + date.getMinutes();
         }
     }
 }).mount("#app")

@@ -137,7 +137,7 @@
                             <div class="message">
                                 <span>{{ chat.message }}</span>
                             </div>
-                            
+
                             <div class="date">
                                 <small>{{ chat.date }}</small>
                             </div>
@@ -152,7 +152,16 @@
             <!-- Chat Tools -->
             <div class="chat-tools flex-container jc-between align-center">
                 <button class="emoji-btn"><i class="fa-regular fa-face-smile"></i></button>
-                <input type="text" class="message-input" placeholder="Scrivi un messaggio">
+
+                <!-- Chat input -->
+                <input type="text"
+                       class="message-input" 
+                       placeholder="Scrivi un messaggio" 
+                       @keyup.enter="sendMessage"
+                       v-model.trim="myMessage.message"
+                >
+                <!-- /Chat input -->
+
                 <button class="vocal-btn"><i class="fa-solid fa-microphone"></i></button>
             </div>
         </div>
