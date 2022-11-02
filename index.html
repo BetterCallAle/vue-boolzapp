@@ -105,11 +105,11 @@
 
                     <div class="main-user">
                         <div class="avatar">
-                            <img src="img/avatar_io.jpg" alt="Il tuo avatar">
+                            <img :src="`img/avatar${contacts[indexActive].avatar}.jpg`" :alt="`Foto profilo di ${contacts[indexActive].name}`">
                         </div>
                         
                         <div class="contact-info">
-                            <h3 class="user-name">Sofia</h3>
+                            <h3 class="user-name">{{ contacts[indexActive].name }}</h3>
                             <span class="last-seen">Ultimo accesso oggi alle 12:00</span>
                         </div>
                     </div>
@@ -129,9 +129,12 @@
                 <div class="chat-wrapper">
                     <div class="container flex-container direction-col">
                         <!-- Message-row -->
-                        <!-- <div v-for="chat in contact" class="message-row">
-
-                        </div> -->
+                        <div v-for="chat in contacts[indexActive].messages" 
+                            :class="chat.status === 'sent' ? 'sent' : 'received'"
+                            class="message-row"
+                        >
+                            <span>{{ chat.message }}</span>
+                        </div>
                         <!-- /Message-row -->
                     </div>
                 </div>

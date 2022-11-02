@@ -9,7 +9,7 @@
     --tertiary-bg: #FAFAFA;
 
     --sent-bg: #D5F9BA;
-    --recieved-bg: #FFFFFF;
+    --received-bg: #FFFFFF;
 
     --font-gray: #B1B1B1;
     --font-dark-gray: #5D7494;
@@ -275,6 +275,23 @@ header .avatar{
     width: 100%;
     overflow-y: scroll;
     background-image: url(../img/mine.jpg);
+    padding-top: 2rem
+}
+
+.message-row{
+    width: 50%;
+    padding: 1.3rem 1rem;
+    border-radius: 15px;
+    margin-top: .5rem;
+}
+
+.message-row.sent{
+    background-color: var(--sent-bg);
+    align-self: end;
+}
+
+.message-row.received{
+    background-color: var(--received-bg);
 }
 /* /Chat wrapper */
 
