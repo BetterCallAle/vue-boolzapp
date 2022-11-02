@@ -133,7 +133,14 @@
                             :class="chat.status === 'sent' ? 'sent' : 'received'"
                             class="message-row"
                         >
-                            <span>{{ chat.message }}</span>
+
+                            <div class="message">
+                                <span>{{ chat.message }}</span>
+                            </div>
+                            
+                            <div class="date">
+                                <small>{{ chat.date }}</small>
+                            </div>
                         </div>
                         <!-- /Message-row -->
                     </div>
