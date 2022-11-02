@@ -232,6 +232,10 @@ header .avatar{
     background-color: var(--primary-bg);
 }
 
+.contact-info{
+    width: 50%;
+}
+
 .contact .avatar{
     width: 4em;
     height: 4em;
@@ -239,10 +243,12 @@ header .avatar{
 
 .last-message{
     display: block;
+    white-space: nowrap;
     color: var(--font-gray);
     font-size: .8rem;
     margin-top: .2rem;
-    overflow: hidden;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
 /* /Section: contacts */
 /* /Main */

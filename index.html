@@ -68,28 +68,31 @@
 
                 <!-- Section: contacts -->
                 <section id="contacts">
-                    <div class="container">
                         <!-- Contact wrapper -->
                         <div v-for="(thisContact, index) in contacts"
-                            class="contact flex-container"
+                            class="contact"
                             @click="activateThisContact(index)"
                             :class="{'active' : index === indexActive}"
-                         >
-                            <!-- Contact image -->
-                            <div class="avatar">
-                                <img :src="`img/avatar${thisContact.avatar}.jpg`" :alt="`Foto profilo di ${thisContact.name}`">
-                            </div>
-                            <!-- /Contact image -->
+                        >
 
-                            <!-- Contact info -->
-                            <div class="contact-info">
-                                <h3 class="user-name">{{ thisContact.name }}</h3>
-                                <span class="last-message">{{ thisContact.messages[thisContact.messages.length - 1].message }}</span>
+                            <div class="container flex-container">
+                                <!-- Contact image -->
+                                <div class="avatar">
+                                    <img :src="`img/avatar${thisContact.avatar}.jpg`" :alt="`Foto profilo di ${thisContact.name}`">
+                                </div>
+                                <!-- /Contact image -->
+    
+                                <!-- Contact info -->
+                                <div class="contact-info">
+                                    <h3 class="user-name">{{ thisContact.name }}</h3>
+                                    <span class="last-message">{{ thisContact.messages[thisContact.messages.length - 1].message }}</span>
+                                </div>
+                                <!-- /Contact info -->
                             </div>
-                            <!-- /Contact info -->
+
                         </div>
                         <!-- /Contact wrapper -->
-                    </div>
+
                 </section>
                 <!-- /Section: contacts -->
             </main>
@@ -162,8 +165,12 @@
                 >
                 <!-- /Chat input -->
 
-                <button class="vocal-btn" v-if="myMessage.message.length === 0"><i class="fa-solid fa-microphone"></i></button>
-                <button class="send-btn" v-else @click="sendMessage"><i class="fa-solid fa-chevron-right"></i></button>
+                <button class="vocal-btn" v-if="myMessage.message.length === 0">
+                    <i class="fa-solid fa-microphone"></i>
+                </button>
+                <button class="send-btn" v-else @click="sendMessage">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
         </div>
         <!-- /chat space -->
