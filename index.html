@@ -70,7 +70,11 @@
                 <section id="contacts">
                     <div class="container">
                         <!-- Contact wrapper -->
-                        <div v-for="thisContact in contacts" class="contact flex-container">
+                        <div v-for="(thisContact, index) in contacts"
+                            class="contact flex-container"
+                            @click="activateThisContact(index)"
+                            :class="{'active' : index === indexActive}"
+                         >
                             <!-- Contact image -->
                             <div class="avatar">
                                 <img :src="`img/avatar${thisContact.avatar}.jpg`" :alt="`Foto profilo di ${thisContact.name}`">
@@ -94,7 +98,54 @@
         <!-- /conversation space -->
 
         <!-- chat space -->
-        <div class="chat"></div>
+        <div class="chat">
+            <!-- Header -->
+            <header class="chat-header">
+                <div class="header-container flex-container jc-between align-center">
+
+                    <div class="main-user">
+                        <div class="avatar">
+                            <img src="img/avatar_io.jpg" alt="Il tuo avatar">
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h3 class="user-name">Sofia</h3>
+                            <span class="last-seen">Ultimo accesso oggi alle 12:00</span>
+                        </div>
+                    </div>
+
+                    <nav class="tools">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </nav>
+                </div>
+            </header>
+            <!-- /Header -->
+
+            <!-- Main -->
+            <main>
+                <!-- Chat -->
+                <div class="chat-wrapper">
+                    <div class="container flex-container direction-col">
+                        <!-- Message-row -->
+                        <!-- <div v-for="chat in contact" class="message-row">
+
+                        </div> -->
+                        <!-- /Message-row -->
+                    </div>
+                </div>
+                <!-- /Chat -->
+            </main>
+            <!-- /Main -->
+
+            <!-- Chat Tools -->
+            <div class="chat-tools flex-container jc-between align-center">
+                <button class="emoji-btn"><i class="fa-regular fa-face-smile"></i></button>
+                <input type="text" class="message-input" placeholder="Scrivi un messaggio">
+                <button class="vocal-btn"><i class="fa-solid fa-microphone"></i></button>
+            </div>
+        </div>
         <!-- /chat space -->
     </div>
 

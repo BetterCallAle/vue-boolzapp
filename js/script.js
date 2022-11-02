@@ -165,8 +165,13 @@ createApp({
                         }
                     ],
                 }
-            ]
-            
+            ],
+            indexActive: 0
+        }
+    },
+    methods:{
+        activateThisContact(index){
+            this.indexActive = index
         }
     }
 }).mount("#app")

@@ -96,6 +96,10 @@ input[type="text"]{
     padding-right: .8rem;
 }
 
+input[type="text"]:focus{
+    outline: none;
+}
+
 /* Flex */
 .flex-container{
     display: flex;
@@ -109,6 +113,10 @@ input[type="text"]{
     align-items: center;
 }
 
+.direction-col{
+    flex-direction: column;
+}
+/* /flex */
 /* /COMMON */
 
 /* APP */
@@ -121,25 +129,25 @@ input[type="text"]{
     background-color: white;
 }
 
+/* Header */
+header{
+    width: 100%;
+    height: var(--header-size);
+    background-color: var(--primary-bg);
+}
+
+header .avatar{
+    width: 3em;
+    height: 3em;
+}
+/* /Header */
+
 /* Conversation space */
 .conversation{
     width: 35%;
     height: 100%;
     border-right: 1px solid var(--font-gray);
 }
-
-/* Header */
-.conversation-header{
-    width: 100%;
-    height: var(--header-size);
-    background-color: var(--primary-bg);
-}
-
-.conversation-header .avatar{
-    width: 3em;
-    height: 3em;
-}
-/* /Header */
 
 /* Main */
 /* Section: alert */
@@ -202,10 +210,6 @@ input[type="text"]{
     padding: .7rem 0;
     width: 85%;
 }
-
-.search-input:focus{
-    outline: none;
-}
 /* /Section: search */
 
 /* Section: contacts */
@@ -217,6 +221,16 @@ input[type="text"]{
 
 .contact{
     padding: 1rem 0;
+    cursor: pointer;
+    transition: all 125ms linear;
+}
+
+.contact.active{
+    background-color: var(--primary-bg);
+}
+
+.contact:hover{
+    background-color: var(--primary-bg);
 }
 
 .contact .avatar{
@@ -242,5 +256,53 @@ input[type="text"]{
     /* debug */
     background-color: lightgoldenrodyellow; 
 }
+
+.last-seen{
+    display: block;
+    color: var(--font-gray);
+    font-size: .8rem;
+    font-weight: 500;
+}
+
+.contact-info{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Chat wrapper */
+.chat-wrapper{
+    height: calc(90vh - var(--header-size) * 2);
+    width: 100%;
+    overflow-y: scroll;
+    background-image: url(../img/mine.jpg);
+}
+/* /Chat wrapper */
+
+/* Chat tools */
+.chat-tools{
+    height: var(--header-size);
+    width: 100%;
+    background-color: var(--primary-bg);
+}
+
+.emoji-btn, .vocal-btn{
+    width: 10%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--font-dark-gray);
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+}
+
+.message-input{
+    width: 80%;
+    border:none;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 10px;
+}
+/* /Chat tools */
 /* /Chat space */
 /* /APP */
