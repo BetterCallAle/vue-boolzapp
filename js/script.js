@@ -1,5 +1,9 @@
 const {createApp} = Vue;
 
+/* Initialize Luxon */
+const dateTime = luxon.DateTime;
+
+/* Setting VueJs */
 createApp({
     data(){
         return{
@@ -200,8 +204,7 @@ createApp({
         },
 
         getDate(){
-            const date = new Date;
-            return date.getHours() + ':' + date.getMinutes();
+            return dateTime.now().setLocale("it").toLocaleString(dateTime.DATETIME_SHORT_WITH_SECONDS)
         }
     }
 }).mount("#app")

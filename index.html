@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- VueJS -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Luxon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.1.0/luxon.min.js" integrity="sha512-79nhbkASdW5wurW8DtF9Vd7BEDKdTbCKkh87lW6W3tk9T4L9Bc58MzmvRzjMcFCSKpjkoRjwzrTdfOa5lkfJ5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     
@@ -88,6 +90,12 @@
                                     <span class="last-message">{{ thisContact.messages[thisContact.messages.length - 1].message }}</span>
                                 </div>
                                 <!-- /Contact info -->
+
+                                <!-- Last message date -->
+                                <div class="date">
+                                    <small>{{ thisContact.messages[thisContact.messages.length - 1].date }}</small>
+                                </div>
+                                <!-- /Last message date -->
                             </div>
 
                         </div>
@@ -169,7 +177,7 @@
                     <i class="fa-solid fa-microphone"></i>
                 </button>
                 <button class="send-btn" v-else @click="sendMessage">
-                    <i class="fa-solid fa-chevron-right"></i>
+                    <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </div>
         </div>

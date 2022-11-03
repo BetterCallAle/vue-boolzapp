@@ -99,6 +99,13 @@ input[type="text"]:focus{
     outline: none;
 }
 
+.date{
+    margin-top: .5rem;
+    font-size: .5rem;
+    color: var(--font-gray);
+    text-align: right;
+}
+
 /* Flex */
 .flex-container{
     display: flex;
@@ -243,12 +250,17 @@ header .avatar{
 
 .last-message{
     display: block;
+    width: 50%;
     white-space: nowrap;
     color: var(--font-gray);
     font-size: .8rem;
     margin-top: .2rem;
     overflow-x: hidden;
     text-overflow: ellipsis;
+}
+
+.contact .date{
+    flex-grow: 1;
 }
 /* /Section: contacts */
 /* /Main */
@@ -282,11 +294,12 @@ header .avatar{
 }
 
 .message-row{
-    width: 50%;
-    padding: 1.3rem 1rem;
+    min-width: 260px;
+    max-width: 50%;
+    padding: 1.3rem 1rem .5rem 1rem;
     border-radius: 15px;
     margin-top: .5rem;
-    position: relative;
+    word-break: break-all;
 }
 
 .message-row.sent{
@@ -296,17 +309,10 @@ header .avatar{
 
 .message-row.received{
     background-color: var(--received-bg);
+    align-self: start;
 }
 
-.date{
-    margin-top: .5rem;
-    text-align: right;
-    font-size: .5rem;
-    color: var(--font-gray);
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-}
+
 /* /Chat wrapper */
 
 /* Chat tools */
