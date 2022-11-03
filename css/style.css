@@ -59,6 +59,10 @@ a{
     text-decoration: none;
 }
 
+ul{
+    list-style-type: none;
+}
+
 .avatar{
     display: inline-block;
     border-radius: 50%;
@@ -310,6 +314,7 @@ header .avatar{
     border-radius: 15px;
     margin-top: .5rem;
     word-break: break-word;
+    position: relative;
 }
 
 .message-row.sent{
@@ -321,7 +326,6 @@ header .avatar{
     background-color: var(--received-bg);
     align-self: start;
 }
-
 
 /* /Chat wrapper */
 

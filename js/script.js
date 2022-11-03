@@ -181,9 +181,11 @@ createApp({
 
             botMessage:{
                 date: this.getDate(),
-                message: 'ok',
+                message: '',
                 status: 'received'
             },
+
+            presetBotMessages: ["Certo!", "Va bene", "lol", "Ho visto", "How I Met Your Mother è la miglior serie comedy che ci sia", "Non posso rispondere, ti chiamo io dopo", "Ricordami che devo farti sentire una canzone"],
 
             userSearch: ""
         }
@@ -198,7 +200,8 @@ createApp({
                 this.contacts[this.indexActive].messages.push({...this.myMessage});
 
                 setTimeout(()=>{
-                    this.contacts[this.indexActive].messages.push(this.botMessage)
+                    this.botMessage.message = this.presetBotMessages[this.generateRndNumber(0, this.presetBotMessages.length - 1)]
+                    this.contacts[this.indexActive].messages.push({...this.botMessage})
                 }, 1000)
 
                 this.myMessage.message = '';
@@ -227,6 +230,10 @@ createApp({
             this.contacts.forEach((element) => {
                 element.visible = true
             });
+        },
+
+        generateRndNumber(min, max){
+            return Math.floor(Math.random() * (max - min + 1) + min)
         }
     }
 }).mount("#app")
