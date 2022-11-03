@@ -184,6 +184,8 @@ createApp({
                 message: 'ok',
                 status: 'received'
             },
+
+            userSearch: ""
         }
     },
     methods:{
@@ -205,6 +207,19 @@ createApp({
 
         getDate(){
             return dateTime.now().setLocale("it").toLocaleString(dateTime.DATETIME_SHORT_WITH_SECONDS)
+        },
+
+        checkTheUserSearch(){
+           this.contacts.forEach((element) => {
+            
+                if(this.userSearch.length > 0){
+                    const userSearchFormatted = this.userSearch[0].toUpperCase() + this.userSearch.slice(1);
+                    element.name.includes(userSearchFormatted) ? element.visible = true : element.visible = false
+                } else {
+                    element.visible = true
+                }
+
+           });
         }
     }
 }).mount("#app")
