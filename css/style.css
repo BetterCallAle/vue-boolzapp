@@ -194,6 +194,7 @@ header .avatar{
 #search{
     height: var(--search-height);
     background-color: var(--tertiary-bg);
+    position: relative;
 }
 
 .search-btn{
@@ -215,6 +216,15 @@ header .avatar{
     border-left: none;
     padding: .7rem 0;
     width: 85%;
+}
+
+.clear-input{
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    color: var(--font-dark-gray);
+    cursor: pointer;
 }
 /* /Section: search */
 

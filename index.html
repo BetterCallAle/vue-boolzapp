@@ -71,6 +71,9 @@
                                @keyup="checkTheUserSearch"
                         >
                         <!-- /Search Input -->
+                        <div class="clear-input" v-if="userSearch.length > 0" @click="clearInput">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
                     </div>
                 </section>
                 <!-- /Section: search -->

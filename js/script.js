@@ -211,7 +211,7 @@ createApp({
 
         checkTheUserSearch(){
            this.contacts.forEach((element) => {
-            
+
                 if(this.userSearch.length > 0){
                     const userSearchFormatted = this.userSearch[0].toUpperCase() + this.userSearch.slice(1);
                     element.name.includes(userSearchFormatted) ? element.visible = true : element.visible = false
@@ -220,6 +220,13 @@ createApp({
                 }
 
            });
+        },
+        
+        clearInput(){
+            this.userSearch = "";
+            this.contacts.forEach((element) => {
+                element.visible = true
+            });
         }
     }
 }).mount("#app")
