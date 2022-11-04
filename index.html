@@ -22,186 +22,198 @@
 <body>
     
     <div id="app">
-        <!-- conversation space -->
-        <div class="conversation">
-            <!-- Header -->
-            <header class="conversation-header">
-                <div class="header-container flex-container jc-between align-center">
-                    <div class="main-user">
-                        <div class="avatar">
-                            <img src="img/avatar_io.jpg" alt="Il tuo avatar">
+        <div class="app-wrapper" @click="hideMenu">
+            <!-- conversation space -->
+            <div class="conversation">
+                <!-- Header -->
+                <header class="conversation-header">
+                    <div class="header-container flex-container jc-between align-center">
+                        <div class="main-user">
+                            <div class="avatar">
+                                <img src="img/avatar_io.jpg" alt="Il tuo avatar">
+                            </div>
+                            <h3 class="user-name">Sofia</h3>
                         </div>
-                        <h3 class="user-name">Sofia</h3>
+        
+                        <nav class="tools">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </nav>
                     </div>
-    
-                    <nav class="tools">
-                        <i class="fa-solid fa-circle-notch"></i>
-                        <i class="fa-solid fa-message"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </nav>
-                </div>
-            </header>
-            <!-- /Header -->
+                </header>
+                <!-- /Header -->
 
-            <!-- Main -->
-            <main>
-                <!-- Section: alert -->
-                <section id="alert">
-                    <div class="container flex-container align-center">
-                        <div class="icon">
-                            <i class="fa-solid fa-bell-slash"></i>
+                <!-- Main -->
+                <main>
+                    <!-- Section: alert -->
+                    <section id="alert">
+                        <div class="container flex-container align-center">
+                            <div class="icon">
+                                <i class="fa-solid fa-bell-slash"></i>
+                            </div>
+                            <div class="text">
+                                <h2>Ricevi notifiche di nuovi messaggi</h2>
+                                <a href="">Attiva notifiche desktop</a>
+                            </div>
                         </div>
-                        <div class="text">
-                            <h2>Ricevi notifiche di nuovi messaggi</h2>
-                            <a href="">Attiva notifiche desktop</a>
+                    </section>
+                    <!-- Section: alert -->
+
+                    <!-- Section: search -->
+                    <section id="search">
+                        <div class="header-container flex-container align-center">
+                            <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <!-- Search Input -->
+                            <input type="text" 
+                                placeholder="Cerca o inizia una nuova chat" 
+                                class="search-input" 
+                                v-model="userSearch"
+                                @keyup="checkTheUserSearch"
+                            >
+                            <!-- /Search Input -->
+                            <div class="clear-input" v-if="userSearch.length > 0" @click="clearInput">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
                         </div>
-                    </div>
-                </section>
-                <!-- Section: alert -->
+                    </section>
+                    <!-- /Section: search -->
 
-                <!-- Section: search -->
-                <section id="search">
-                    <div class="header-container flex-container align-center">
-                        <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <!-- Search Input -->
-                        <input type="text" 
-                               placeholder="Cerca o inizia una nuova chat" 
-                               class="search-input" 
-                               v-model="userSearch"
-                               @keyup="checkTheUserSearch"
-                        >
-                        <!-- /Search Input -->
-                        <div class="clear-input" v-if="userSearch.length > 0" @click="clearInput">
-                            <i class="fa-solid fa-xmark"></i>
-                        </div>
-                    </div>
-                </section>
-                <!-- /Section: search -->
+                    <!-- Section: contacts -->
+                    <section id="contacts">
+                            <!-- Contact wrapper -->
+                            <div v-for="(thisContact, index) in contacts"
+                                class="contact"
+                                @click="activateThisContact(index)"
+                                :class="{'active' : index === indexActive}"
+                                v-show="thisContact.visible"
+                            >
 
-                <!-- Section: contacts -->
-                <section id="contacts">
-                        <!-- Contact wrapper -->
-                        <div v-for="(thisContact, index) in contacts"
-                            class="contact"
-                            @click="activateThisContact(index)"
-                            :class="{'active' : index === indexActive}"
-                            v-show="thisContact.visible"
-                        >
+                                <div class="container flex-container">
+                                    <!-- Contact image -->
+                                    <div class="avatar">
+                                        <img :src="`img/avatar${thisContact.avatar}.jpg`" :alt="`Foto profilo di ${thisContact.name}`">
+                                    </div>
+                                    <!-- /Contact image -->
+        
+                                    <!-- Contact info -->
+                                    <div class="contact-info">
+                                        <h3 class="user-name">{{ thisContact.name }}</h3>
+                                        <span class="last-message">{{ thisContact.messages[thisContact.messages.length - 1].message }}</span>
+                                    </div>
+                                    <!-- /Contact info -->
 
-                            <div class="container flex-container">
-                                <!-- Contact image -->
-                                <div class="avatar">
-                                    <img :src="`img/avatar${thisContact.avatar}.jpg`" :alt="`Foto profilo di ${thisContact.name}`">
+                                    <!-- Last message date -->
+                                    <div class="date" v-if="thisContact.messages[thisContact.messages.length - 1].date.substring(0,11) < today.substring(0,11)">
+                                        <small>{{ thisContact.messages[thisContact.messages.length - 1].date.substring(0,16) }}</small>
+                                    </div>
+
+                                    <div class="date" v-else>
+                                        <small>{{ thisContact.messages[thisContact.messages.length - 1].date.substring(12,16) }}</small>
+                                    </div>
+                                    <!-- /Last message date -->
                                 </div>
-                                <!-- /Contact image -->
-    
-                                <!-- Contact info -->
-                                <div class="contact-info">
-                                    <h3 class="user-name">{{ thisContact.name }}</h3>
-                                    <span class="last-message">{{ thisContact.messages[thisContact.messages.length - 1].message }}</span>
-                                </div>
-                                <!-- /Contact info -->
 
-                                <!-- Last message date -->
-                                <div class="date" v-if="thisContact.messages[thisContact.messages.length - 1].date.substring(0,11) < today.substring(0,11)">
-                                    <small>{{ thisContact.messages[thisContact.messages.length - 1].date.substring(0,16) }}</small>
+                            </div>
+                            <!-- /Contact wrapper -->
+
+                    </section>
+                    <!-- /Section: contacts -->
+                </main>
+                <!-- /Main -->
+            </div>
+            <!-- /conversation space -->
+
+            <!-- chat space -->
+            <div class="chat">
+                <!-- Header -->
+                <header class="chat-header">
+                    <div class="header-container flex-container jc-between align-center">
+
+                        <div class="main-user">
+                            <div class="avatar">
+                                <img :src="`img/avatar${contacts[indexActive].avatar}.jpg`" :alt="`Foto profilo di ${contacts[indexActive].name}`">
+                            </div>
+                            
+                            <div class="contact-info">
+                                <h3 class="user-name">{{ contacts[indexActive].name }}</h3>
+                                <span class="last-seen">Ultimo accesso oggi alle 12:00</span>
+                            </div>
+                        </div>
+
+                        <nav class="tools">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </nav>
+                    </div>
+                </header>
+                <!-- /Header -->
+
+                <!-- Main -->
+                <main>
+                    <!-- Chat -->
+                    <div class="chat-wrapper">
+                        <div class="container flex-container direction-col">
+                            <!-- Message-row -->
+                            <div v-for="(chat, index) in contacts[indexActive].messages" 
+                                :class="chat.status === 'sent' ? 'sent' : 'received'"
+                                class="message-row"
+                            >
+
+                                <div class="message">
+                                    <span>{{ chat.message }}</span>
+                                </div>
+
+                                <div class="date" v-if="chat.date.substring(0,11) < today.substring(0,11)">
+                                    <small>{{ chat.date.substring(0,16) }}</small>
                                 </div>
 
                                 <div class="date" v-else>
-                                    <small>{{ thisContact.messages[thisContact.messages.length - 1].date.substring(12,16) }}</small>
+                                    <small>{{ chat.date.substring(12,16) }}</small>
                                 </div>
-                                <!-- /Last message date -->
+
+                                <div class="options">
+                                    <div class="options-icon" @click.stop="showOptions(chat, index)">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </div>
+
+                                    <div class="option-selecter" v-if="chat.isMenuActive" @click="deleteMessage(index)">
+                                        <span>Elimina Messaggio</span>
+                                    </div>
+                                </div>
+
                             </div>
-
-                        </div>
-                        <!-- /Contact wrapper -->
-
-                </section>
-                <!-- /Section: contacts -->
-            </main>
-            <!-- /Main -->
-        </div>
-        <!-- /conversation space -->
-
-        <!-- chat space -->
-        <div class="chat">
-            <!-- Header -->
-            <header class="chat-header">
-                <div class="header-container flex-container jc-between align-center">
-
-                    <div class="main-user">
-                        <div class="avatar">
-                            <img :src="`img/avatar${contacts[indexActive].avatar}.jpg`" :alt="`Foto profilo di ${contacts[indexActive].name}`">
-                        </div>
-                        
-                        <div class="contact-info">
-                            <h3 class="user-name">{{ contacts[indexActive].name }}</h3>
-                            <span class="last-seen">Ultimo accesso oggi alle 12:00</span>
+                            <!-- /Message-row -->
                         </div>
                     </div>
+                    <!-- /Chat -->
+                </main>
+                <!-- /Main -->
 
-                    <nav class="tools">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <i class="fa-solid fa-paperclip"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </nav>
+                <!-- Chat Tools -->
+                <div class="chat-tools flex-container jc-between align-center">
+                    <button class="emoji-btn"><i class="fa-regular fa-face-smile"></i></button>
+
+                    <!-- Chat input -->
+                    <input type="text"
+                        class="message-input" 
+                        placeholder="Scrivi un messaggio" 
+                        @keyup.enter="sendMessage"
+                        v-model.trim="myMessage.message"
+                    >
+                    <!-- /Chat input -->
+
+                    <button class="vocal-btn" v-if="myMessage.message.length === 0">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+                    <button class="send-btn" v-else @click="sendMessage">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
                 </div>
-            </header>
-            <!-- /Header -->
-
-            <!-- Main -->
-            <main>
-                <!-- Chat -->
-                <div class="chat-wrapper">
-                    <div class="container flex-container direction-col">
-                        <!-- Message-row -->
-                        <div v-for="chat in contacts[indexActive].messages" 
-                            :class="chat.status === 'sent' ? 'sent' : 'received'"
-                            class="message-row"
-                        >
-
-                            <div class="message">
-                                <span>{{ chat.message }}</span>
-                            </div>
-
-                            <div class="date" v-if="chat.date.substring(0,11) < today.substring(0,11)">
-                                <small>{{ chat.date.substring(0,16) }}</small>
-                            </div>
-
-                            <div class="date" v-else>
-                                <small>{{ chat.date.substring(12,16) }}</small>
-                            </div>
-
-                        </div>
-                        <!-- /Message-row -->
-                    </div>
-                </div>
-                <!-- /Chat -->
-            </main>
-            <!-- /Main -->
-
-            <!-- Chat Tools -->
-            <div class="chat-tools flex-container jc-between align-center">
-                <button class="emoji-btn"><i class="fa-regular fa-face-smile"></i></button>
-
-                <!-- Chat input -->
-                <input type="text"
-                       class="message-input" 
-                       placeholder="Scrivi un messaggio" 
-                       @keyup.enter="sendMessage"
-                       v-model.trim="myMessage.message"
-                >
-                <!-- /Chat input -->
-
-                <button class="vocal-btn" v-if="myMessage.message.length === 0">
-                    <i class="fa-solid fa-microphone"></i>
-                </button>
-                <button class="send-btn" v-else @click="sendMessage">
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
             </div>
+            <!-- /chat space -->
         </div>
-        <!-- /chat space -->
     </div>
 
     <!-- Link JS -->

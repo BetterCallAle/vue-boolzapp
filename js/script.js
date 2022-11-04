@@ -189,53 +189,88 @@ createApp({
 
             userSearch: "",
 
-            today: this.getDate()
+            today: this.getDate(),
+
+            optionIndex: 0
         }
     },
     methods:{
+        // Make the element clicked active
         activateThisContact(index){
             this.indexActive = index;
         },
 
+        // push the input saved in myMessage in messages 
         sendMessage(){
             if(this.myMessage.message.length > 0){
                 this.contacts[this.indexActive].messages.push({...this.myMessage});
 
+                // after one sec the bot will respond with a random phrase
                 setTimeout(()=>{
                     this.botMessage.message = this.presetBotMessages[this.generateRndNumber(0, this.presetBotMessages.length - 1)]
                     this.contacts[this.indexActive].messages.push({...this.botMessage})
                 }, 1000)
 
+                // clear the input
                 this.myMessage.message = '';
             }
         },
 
+        // Generate a random number
+        generateRndNumber(min, max){
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        },
+
+        // generate the current date
         getDate(){
             return dateTime.now().setLocale("it").toLocaleString(dateTime.DATETIME_SHORT_WITH_SECONDS)
         },
 
+        // check if in the input there are the same letters present in the names in contacts
         checkTheUserSearch(){
            this.contacts.forEach((element) => {
 
                 if(this.userSearch.length > 0){
+                    // make the first letter in the input uppercase
                     const userSearchFormatted = this.userSearch[0].toUpperCase() + this.userSearch.slice(1);
+                    // if input letters are present in contacts name make display: none all the rest
                     element.name.includes(userSearchFormatted) ? element.visible = true : element.visible = false
                 } else {
+                    // if the input search length is 0 make all contacts visible
                     element.visible = true
                 }
 
            });
         },
         
+        // Make all contacts visibile when clicking on X
         clearInput(){
             this.userSearch = "";
             this.contacts.forEach((element) => {
                 element.visible = true
             });
         },
+        
 
-        generateRndNumber(min, max){
-            return Math.floor(Math.random() * (max - min + 1) + min)
+        showOptions(chat, index){
+            this.hideMenu();
+            this.optionIndex = index;
+
+            chat.isMenuActive = true;
+        },
+
+        hideMenu(){
+            if(this.contacts[this.indexActive].messages.length - 1 < this.optionIndex){
+                this.optionIndex = 0
+                this.contacts[this.indexActive].messages[this.optionIndex].isMenuActive = false;
+            } else {
+                console.log("maggiore");
+                this.contacts[this.indexActive].messages[this.optionIndex].isMenuActive = false;
+            }
+        },
+
+        deleteMessage(messageIndex){
+            this.contacts[this.indexActive].messages.splice(messageIndex, 1)
         }
     }
 }).mount("#app")

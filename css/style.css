@@ -3,6 +3,7 @@
     /* colors */
     --body-bg-primary: #009688;
     --body-bg-secondary: #D9DBD4;
+    --body-bg-tertiary: #d2dbdc;
 
     --primary-bg: #EAEAEA;
     --secondary-bg: #8EDAFC;
@@ -31,23 +32,6 @@
 /* COMMON */
 html{
     font-family: 'Lato', sans-serif;
-}
-
-body{
-    background-color: var(--body-bg-secondary);
-    position: relative;
-}
-
-body::before{
-    content: "";
-    background-color: var(--body-bg-primary);
-    display: block;
-    width: 100%;
-    height: 30vh;
-    position: absolute;
-    top: -5vh;
-    left: 0;
-    z-index: -1;
 }
 
 img{
@@ -105,7 +89,7 @@ input[type="text"]:focus{
 
 .date{
     margin-top: .5rem;
-    font-size: .5rem;
+    font-size: .7rem;
     color: var(--font-gray);
     text-align: right;
 }
@@ -131,12 +115,24 @@ input[type="text"]:focus{
 
 /* APP */
 #app{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background-image: linear-gradient(to bottom, var(--body-bg-primary) 0%,
+                      var(--body-bg-primary) 25vh,
+                      var(--body-bg-secondary) 25vh,
+                      var(--body-bg-tertiary) 100%);
+}
+
+.app-wrapper{
     width: 80%;
     height: 90vh;
-    margin: 5vh auto;
-    display: flex;
-    /* debug */
     background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
 }
 
 /* Header */
