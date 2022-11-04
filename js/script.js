@@ -187,7 +187,9 @@ createApp({
 
             presetBotMessages: ["Certo!", "Va bene", "lol", "Ho visto", "How I Met Your Mother è la miglior serie comedy che ci sia", "Non posso rispondere, ti chiamo io dopo", "Ricordami che devo farti sentire una canzone"],
 
-            userSearch: ""
+            userSearch: "",
+
+            today: this.getDate()
         }
     },
     methods:{

@@ -103,8 +103,12 @@
                                 <!-- /Contact info -->
 
                                 <!-- Last message date -->
-                                <div class="date">
-                                    <small>{{ thisContact.messages[thisContact.messages.length - 1].date }}</small>
+                                <div class="date" v-if="thisContact.messages[thisContact.messages.length - 1].date.substring(0,11) < today.substring(0,11)">
+                                    <small>{{ thisContact.messages[thisContact.messages.length - 1].date.substring(0,16) }}</small>
+                                </div>
+
+                                <div class="date" v-else>
+                                    <small>{{ thisContact.messages[thisContact.messages.length - 1].date.substring(12,16) }}</small>
                                 </div>
                                 <!-- /Last message date -->
                             </div>
@@ -160,8 +164,12 @@
                                 <span>{{ chat.message }}</span>
                             </div>
 
-                            <div class="date">
-                                <small>{{ chat.date }}</small>
+                            <div class="date" v-if="chat.date.substring(0,11) < today.substring(0,11)">
+                                <small>{{ chat.date.substring(0,16) }}</small>
+                            </div>
+
+                            <div class="date" v-else>
+                                <small>{{ chat.date.substring(12,16) }}</small>
                             </div>
 
                         </div>
