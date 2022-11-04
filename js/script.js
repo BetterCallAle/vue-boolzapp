@@ -280,7 +280,8 @@ createApp({
                 message: '',
                 status: "hidden"
             }
-                
+            
+            // for prevent error with the DOM elements if the length of messages is 1 will push an empty and hidden object
             if(this.contacts[this.indexActive].messages.length === 1){
                 this.contacts[this.indexActive].messages.push(emptyMessage)
                 this.contacts[this.indexActive].messages.splice(this.optionIndex, 1)
