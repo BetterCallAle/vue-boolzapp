@@ -157,31 +157,33 @@
                         <div class="container flex-container direction-col">
                             <!-- Message-row -->
                             <div v-for="(chat, index) in contacts[indexActive].messages" 
-                                :class="chat.status === 'sent' ? 'sent' : 'received'"
+                                :class="chat.status"
                                 class="message-row"
                             >
 
-                                <div class="message">
-                                    <span>{{ chat.message }}</span>
-                                </div>
-
-                                <div class="date" v-if="chat.date.substring(0,11) < today.substring(0,11)">
-                                    <small>{{ chat.date.substring(0,16) }}</small>
-                                </div>
-
-                                <div class="date" v-else>
-                                    <small>{{ chat.date.substring(12,16) }}</small>
-                                </div>
-
-                                <div class="options">
-                                    <div class="options-icon" @click.stop="showOptions(chat, index)">
-                                        <i class="fa-solid fa-chevron-down"></i>
+                               <div class="message-wrapper" v-if="chat.message.length > 0">
+                                    <div class="message">
+                                        <span>{{ chat.message }}</span>
                                     </div>
 
-                                    <div class="option-selecter" v-if="chat.isMenuActive" @click="deleteMessage(index)">
-                                        <span>Elimina Messaggio</span>
+                                    <div class="date" v-if="chat.date.substring(0,11) < today.substring(0,11)">
+                                        <small>{{ chat.date.substring(0,16) }}</small>
                                     </div>
-                                </div>
+
+                                    <div class="date" v-else>
+                                        <small>{{ chat.date.substring(12,16) }}</small>
+                                    </div>
+
+                                    <div class="options">
+                                        <div class="options-icon" @click.stop="showOptions(chat, index)">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </div>
+
+                                        <div class="option-selecter" v-if="chat.isMenuActive" @click="deleteMessage">
+                                            <span>Elimina Messaggio</span>
+                                        </div>
+                                    </div>
+                               </div>
 
                             </div>
                             <!-- /Message-row -->

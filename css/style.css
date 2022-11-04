@@ -323,6 +323,9 @@ header .avatar{
     align-self: start;
 }
 
+.message-row.hidden{
+    display: none;
+}
 /* /Chat wrapper */
 
 /* Chat tools */

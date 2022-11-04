@@ -250,27 +250,43 @@ createApp({
                 element.visible = true
             });
         },
-        
 
+        // Make the option menu appear by clicking a message
         showOptions(chat, index){
+            // hiding the prev menu if was open
             this.hideMenu();
             this.optionIndex = index;
-
+            
+            // show the menu
             chat.isMenuActive = true;
         },
 
+        // Hide the option menu
         hideMenu(){
-            if(this.contacts[this.indexActive].messages.length - 1 < this.optionIndex){
-                this.optionIndex = 0
-                this.contacts[this.indexActive].messages[this.optionIndex].isMenuActive = false;
-            } else {
-                console.log("maggiore");
-                this.contacts[this.indexActive].messages[this.optionIndex].isMenuActive = false;
-            }
+            this.contacts.forEach(element => {
+                // if the length of messages is minor than option index make option index = 0
+                if(element.messages.length - 1 < this.optionIndex){
+                    this.optionIndex = 0
+                } else {
+                    element.messages[this.optionIndex].isMenuActive = false;
+                }
+            })
         },
 
-        deleteMessage(messageIndex){
-            this.contacts[this.indexActive].messages.splice(messageIndex, 1)
+        // delete a message
+        deleteMessage(){ 
+            let emptyMessage = {
+                date: "",
+                message: '',
+                status: "hidden"
+            }
+                
+            if(this.contacts[this.indexActive].messages.length === 1){
+                this.contacts[this.indexActive].messages.push(emptyMessage)
+                this.contacts[this.indexActive].messages.splice(this.optionIndex, 1)
+            } else  {
+                this.contacts[this.indexActive].messages.splice(this.optionIndex, 1)
+            }
         }
     }
 }).mount("#app")
