@@ -95,23 +95,29 @@
                                         <img :src="`img/avatar${thisContact.avatar}.jpg`" :alt="`Foto profilo di ${thisContact.name}`">
                                     </div>
                                     <!-- /Contact image -->
+
+                                    <div class="info-wrapper">
+                                        <!-- Contact info -->
+                                        <div class="contact-name">
+                                            <h3 class="user-name">{{ thisContact.name }}</h3>
+                                        </div>
+                                        <!-- /Contact info -->
+                                        
+                                        <!-- Last message and date -->
+                                        <div class="contact-msg-date" v-if="thisContact.messages.length > 0">
+                                            <span class="last-message">{{ thisContact.messages[thisContact.messages.length - 1].message }}</span>
+    
+                                            <div class="date" v-if="thisContact.messages[thisContact.messages.length - 1].date.substring(0,11) < today.substring(0,11)">
+                                                <small>{{ thisContact.messages[thisContact.messages.length - 1].date.substring(0,16) }}</small>
+                                            </div>
+                                         
+                                            <div class="date" v-else>
+                                                <small>{{ thisContact.messages[thisContact.messages.length - 1].date.substring(12,16) }}</small>
+                                            </div>
+                                        </div>
+                                        <!-- /Last message and date -->
+                                    </div>
         
-                                    <!-- Contact info -->
-                                    <div class="contact-info">
-                                        <h3 class="user-name">{{ thisContact.name }}</h3>
-                                        <span class="last-message">{{ thisContact.messages[thisContact.messages.length - 1].message }}</span>
-                                    </div>
-                                    <!-- /Contact info -->
-
-                                    <!-- Last message date -->
-                                    <div class="date" v-if="thisContact.messages[thisContact.messages.length - 1].date.substring(0,11) < today.substring(0,11)">
-                                        <small>{{ thisContact.messages[thisContact.messages.length - 1].date.substring(0,16) }}</small>
-                                    </div>
-
-                                    <div class="date" v-else>
-                                        <small>{{ thisContact.messages[thisContact.messages.length - 1].date.substring(12,16) }}</small>
-                                    </div>
-                                    <!-- /Last message date -->
                                 </div>
 
                             </div>

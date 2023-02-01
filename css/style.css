@@ -249,8 +249,14 @@ header .avatar{
     background-color: var(--primary-bg);
 }
 
-#contacts .contact-info{
-    width: 50%;
+.contact-msg-date{
+    display: flex;
+    justify-content: space-between;
+    margin-top: .3rem;
+}
+
+#contacts .info-wrapper{
+    width: 75%;
 }
 
 .contact .avatar{
